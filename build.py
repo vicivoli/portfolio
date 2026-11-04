@@ -182,7 +182,7 @@ def page_home():
     facts = "".join(f"<span><b>{e(a)}</b> {e(b)}</span>" for a, b in SITE["stats"])
     skills = "".join(f"<li>{e(x)}</li>" for x in SITE["skills"])
     press = "".join(brand_li(x) for x in SITE["press"])
-    impact = "".join(f"<li><b>{e(a)}</b><span>{e(b)}</span></li>" for a, b in SITE["impact"])
+    impact = "".join(f'<li><b data-roll="{e(a)}">{e(a)}</b><span>{e(b)}</span></li>' for a, b in SITE["impact"])
     exp = "".join(f'<div class="xr"><span>{e(r)}</span><span>{e(o)}</span><span>{e(y)}</span></div>' for r, o, y in SITE["experience"])
     resumes = "".join(f'<a class="btn" href="{pre}{u}" target="_blank" rel="noopener">Resume · {e(n)} ↗</a>' for n, u in SITE["resumes"])
     out = head(SITE['name'], pre) + header(pre) + '<main id="top">\n'

@@ -89,6 +89,33 @@
     fig.addEventListener('touchstart', function () { size(); on = true; if (!raf) raf = requestAnimationFrame(tick); setTimeout(function () { on = false; }, 2500); }, { passive: true });
   });
 
+  // Rolling numbers: each digit spins up to its value when the Impact list scrolls into view
+  var rolls = $$('[data-roll]');
+  if (rolls.length && !reduce && 'IntersectionObserver' in window) {
+    rolls.forEach(function (el) {
+      var txt = el.getAttribute('data-roll'), html = '', di = 0;
+      for (var i = 0; i < txt.length; i++) {
+        var ch = txt[i];
+        if (/[0-9]/.test(ch)) {
+          var stack = '';
+          for (var n = 0; n <= 9; n++) stack += '<span>' + n + '</span>';
+          html += '<span class="roll-d"><span class="roll-s" data-to="' + ch + '" style="transition-delay:' + (di * 90) + 'ms">' + stack + '</span></span>';
+          di++;
+        } else html += '<span class="roll-c">' + ch + '</span>';
+      }
+      el.setAttribute('aria-label', txt);
+      el.innerHTML = html;
+    });
+    var rio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        $$('.roll-s', en.target).forEach(function (s) { s.style.transform = 'translateY(-' + s.getAttribute('data-to') + 'em)'; });
+        rio.unobserve(en.target);
+      });
+    }, { threshold: 0.6 });
+    rolls.forEach(function (el) { rio.observe(el); });
+  }
+
   // Menu overlay
   var btn = $('.menu-btn'), menu = $('#menu');
   if (btn && menu) {

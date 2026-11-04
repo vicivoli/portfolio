@@ -316,7 +316,7 @@ video{transition:opacity .4s}
 .about-cols ul{display:flex;flex-direction:column}
 .impact li{display:flex;flex-direction:column;gap:2px;padding:10px 0}
 .impact b{font-size:26px;line-height:1;letter-spacing:-.06em;font-weight:500}
-.impact span{color:var(--muted);font-size:13px}
+.impact li>span{color:var(--muted);font-size:13px}
 @media (max-width:820px){.about-cols{grid-template-columns:minmax(0,1fr)}}
 
 /* flatten every surface: no grey panels, no white boxes, no black letterboxing */
@@ -434,3 +434,10 @@ li.pc a{display:inline-flex;align-items:center;gap:6px;color:inherit;text-decora
 li.pc a .arr{opacity:0;transform:translateX(-4px);transition:opacity .2s,transform .2s}
 li.pc a:hover .arr,li.pc a:focus-visible .arr{opacity:1;transform:none}
 li.pc a:hover{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+
+/* rolling numbers (Impact) */
+[data-roll]{display:inline-flex;align-items:flex-end;font-variant-numeric:tabular-nums}
+.roll-d{display:inline-block;height:1em;line-height:1;overflow:hidden;vertical-align:bottom}
+.roll-s{display:flex;flex-direction:column;transition:transform 1.6s cubic-bezier(.2,.75,.15,1)}
+.roll-s span{height:1em;line-height:1}
+.roll-c{display:inline-block;line-height:1}
