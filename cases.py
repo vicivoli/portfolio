@@ -40,7 +40,7 @@ CASES = {
                            [("img", "57mPYQUV7GavNK9KUjrijYnPdFY.jpeg", "TIME"), ("img", "02PhdzZCyVGJFwzcH9pGpXogkU.jpeg", "People")]]),
                 ("press", [("TIME", "https://www.instagram.com/reel/DUlvFNeFd_N/"),
                            ("People", "https://people.com/man-dressed-as-bush-in-bad-bunny-super-bowl-halftime-show-gives-inside-look-exclusive-11903886"),
-                           ("BBC Radio 1", "https://www.instagram.com/p/DUuHqQglLxL/")]),
+                           ("Impact", "https://www.instagram.com/p/DUuHqQglLxL/")]),
                 ("btn", ("Watch the original reel", "https://www.instagram.com/reel/DUh3MNVgCon/")),
             ]},
             {"id": "takeaways", "label": "Takeaways", "h2": "What made it travel.", "blocks": [
@@ -118,8 +118,8 @@ CASES = {
             ]},
             {"id": "camera", "label": "Cinematography", "h2": "Shot on a vintage Soviet lens.", "blocks": [
                 ("p", "I shot nature and the people in the film on a Lumix S5II with a vintage Helios 44-2. The lens gives the swirling bokeh and soft flares that make the forest scenes feel like memory."),
-                ("media", [[("vid", "hq3qLfhxlvKLlGSSFxDGo0MTY.mp4", ""), ("vid", "Gw6wxwT1UWLEBy5zQmBItkg970.mp4", "")],
-                           [("vid", "1HLktdSOFo4FNUNlZQCtxC5ow.mp4", ""), ("vid", "cE1CydNWBv8a7zcIns7yEMrXajY.mp4", "")]]),
+                ("media", [[("loop", "hq3qLfhxlvKLlGSSFxDGo0MTY.mp4", ""), ("loop", "Gw6wxwT1UWLEBy5zQmBItkg970.mp4", "")],
+                           [("loop", "1HLktdSOFo4FNUNlZQCtxC5ow.mp4", ""), ("loop", "cE1CydNWBv8a7zcIns7yEMrXajY.mp4", "")]]),
             ]},
             {"id": "festival", "label": "Festival", "h2": "Official Selection, Bushwick Film Festival 2026.", "blocks": [
                 ("p", "In October 2026 AYAN was selected for the Bushwick Film Festival in New York City. I attended as a filmmaker and, after the screening, answered the audience’s questions in the Q&A."),
@@ -202,3 +202,21 @@ CASES["expansionpictures"] = {
     "extra_meta": [("Timeline", "Aug 2023 – Oct 2025")],
 }
 CASES["ayan"]["role"] = "Cinematographer & cast member"
+
+CASES["fallinginlove"] = {
+    "role": "Visualizer · TouchDesigner",
+    "result": "An audio-reactive visualizer built in TouchDesigner",
+    "extra_meta": [("Tools", "TouchDesigner")],
+    "sections": [
+        {"id": "overview", "label": "Overview", "h2": "The rhythm of falling in love, visualized.", "blocks": [
+            ("p", "“Falling in Love” is a hypnotic visualizer built around the pulse of emotion. Patterns flicker and recombine like a heartbeat learning its rhythm, pulling the viewer into the shifting, electric space of early love."),
+        ]},
+        {"id": "process", "label": "Process", "h2": "I started from the beat.", "blocks": [
+            ("p", "The music came first. I built the piece in TouchDesigner and let the track drive it: an audio analysis of the song feeds a chain of feedback, mirroring, colour keying and bloom, so every hit of the beat pushes the pattern into a new shape."),
+            ("p", "Somewhere in that motion the shapes start to look like something: a flower, a face, a heart. I never decide what. I think that’s where the art is, in the small details, where the person watching brings their own meaning to it."),
+            ("media", [[("img", "fil-touchdesigner.jpg", "The TouchDesigner network: audio analysis → feedback → mirror → bloom")]]),
+        ]},
+    ],
+}
+CASES["araas"] = {"extra_meta": [("Tools", "Final Cut Pro, CapCut, Dazz Cam")]}
+CASES["billieeilish"] = {"extra_meta": [("Tools", "Premiere Pro")]}

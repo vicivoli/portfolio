@@ -36,10 +36,12 @@ def still(p, pre):
 def media_el(kind, name, pre, mode, label="", focus=""):
     w, h = ratio(name)
     st = f' style="object-position:{focus}"' if focus else ""
+    if kind == "loop":
+        kind, mode = "vid", "loop"
     if kind == "vid":
         src = f"{pre}media/{'thumb/' if mode == 'thumb' else ''}{name}"
         poster = f"{pre}media/poster/{name.rsplit('.', 1)[0]}.jpg"
-        extra = "" if mode == "thumb" else " controls"
+        extra = "" if mode in ("thumb", "loop") else " controls"
         return (f'<video data-src="{src}" poster="{poster}" muted loop playsinline preload="none"{extra} '
                 f'width="{w}" height="{h}" aria-label="{e(label)}"{st}></video>')
     return f'<img src="{pre}media/{name}" width="{w}" height="{h}" loading="lazy" decoding="async" alt="{e(label)}"{st}>'
@@ -224,7 +226,6 @@ def page_contact():
     <dl class="contact-list">
       <div><dt>Email</dt><dd><button class="copy" type="button" data-copy="{SITE['email']}"><span>{e(SITE['email'])}</span><span class="copy-hint">Copy</span></button></dd></div>
       <div><dt>Socials</dt><dd><a href="{SITE['linkedin']}" target="_blank" rel="noopener">LinkedIn ↗</a><a href="{SITE['instagram']}" target="_blank" rel="noopener">Instagram ↗</a></dd></div>
-      <div><dt>Resume</dt><dd>{''.join(f'<a href="{u}" target="_blank" rel="noopener">{e(n)} ↗</a>' for n, u in SITE['resumes'])}</dd></div>
       <div><dt>Based in</dt><dd>{e(SITE['location'])}</dd></div>
     </dl>
   </div>
@@ -246,7 +247,7 @@ def media_row(r, pre, title):
         items.append((shape, f'<figure class="mf {shape}"><div class="box" style="--ar:{w}/{h}">{media_el(k, n, pre, "full", capt or title)}</div>{fc}</figure>'))
     shapes = {s for s, _ in items}
     cls = "row" + (" single " + items[0][0] if len(items) == 1 else f" n{len(items)}")
-    if len(items) > 1 and shapes <= {"tall", "square"}:
+    if len(items) > 1 and shapes == {"tall"}:
         cls += " portraits"
     return f'<div class="{cls}">' + "".join(h for _, h in items) + "</div>"
 
