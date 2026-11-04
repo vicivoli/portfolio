@@ -66,6 +66,9 @@ def head(title, pre, desc=""):
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:image" content="https://nikolaipetukhov.com/media/og.jpg">
 <meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="{pre}media/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="{pre}media/favicon-512.png" sizes="512x512" type="image/png">
+<link rel="apple-touch-icon" href="{pre}media/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
@@ -157,7 +160,7 @@ def page_home():
     impact = "".join(f"<li><b>{e(a)}</b><span>{e(b)}</span></li>" for a, b in SITE["impact"])
     exp = "".join(f'<div class="xr"><span>{e(r)}</span><span>{e(o)}</span><span>{e(y)}</span></div>' for r, o, y in SITE["experience"])
     resumes = "".join(f'<a class="btn" href="{pre}{u}" target="_blank" rel="noopener">Resume · {e(n)} ↗</a>' for n, u in SITE["resumes"])
-    out = head(f"{SITE['name']} — {SITE['role']}", pre) + header(pre) + '<main id="top">\n'
+    out = head(SITE['name'], pre) + header(pre) + '<main id="top">\n'
     out += f"""<section class="hero-name">
   <h1 data-fit>{e(SITE['name'])}</h1>
   <div class="hero-sub">
