@@ -380,3 +380,23 @@ blockquote{border-top:1px solid var(--line);padding:14px 0 0}
 .case .hero .hero-labels{position:relative;height:22px;margin-top:8px;font-size:12px;line-height:22px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .case .hero .hero-labels span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap}
 .case .hero video.sp-demo{width:100%;max-height:none}
+
+/* brand colours for press (Featured in, press links) */
+.pc{--c:var(--ink)}
+li.pc{display:flex;align-items:center;gap:10px;color:var(--c)}
+li.pc::before{content:"";width:9px;height:9px;flex:none;background:var(--c)}
+li.pc.nbc{color:var(--ink)}
+.pc.nbc::before{background:conic-gradient(#FCB711 0 60deg,#F37021 0 120deg,#CC004C 0 180deg,#6460AA 0 240deg,#0089D0 0 300deg,#0DB14B 0)}
+.press-list a.pc{border-color:var(--c);color:var(--c);display:inline-flex;align-items:center;gap:8px}
+.press-list a.pc:hover{background:var(--c);color:#fff}
+.press-list a.pc.nbc{border-color:var(--ink);color:var(--ink)}
+.press-list a.pc.nbc::before{content:"";width:9px;height:9px}
+
+/* project accent on hover */
+.r .t,.card-meta span:first-child{transition:color .3s,transform .45s cubic-bezier(.2,.7,.2,1)}
+.rows .r:hover .t,.rows .r:focus-visible .t{color:var(--accent)}
+.r:hover .m b{color:var(--accent)}
+.card:hover .card-meta span:first-child{color:var(--accent)!important}
+/* hero summary */
+.hero-sub p:first-child{max-width:30em}
+.hero-sub .facts span b{margin-right:6px}

@@ -11,6 +11,15 @@ try:
 except Exception:
     DIMS = {}
 YEAR = 2026
+try:
+    WEBMAP = json.load(open(os.path.join(ROOT, "media", "webmap.json")))
+except Exception:
+    WEBMAP = {}
+
+
+def W(name):
+    """Lighter JPEG version of a heavy PNG, if one exists."""
+    return WEBMAP.get(name, name)
 e = html.escape
 
 
@@ -30,7 +39,18 @@ def url_for(p, pre):
 def still(p, pre):
     """A still image for a project (poster for videos)."""
     k, n = p["thumb"]
-    return f"{pre}media/poster/{n.rsplit('.', 1)[0]}.jpg" if k == "vid" else f"{pre}media/{n}"
+    return f"{pre}media/poster/{n.rsplit('.', 1)[0]}.jpg" if k == "vid" else f"{pre}media/{W(n)}"
+
+
+def brand_attr(name):
+    c = SITE.get("press_colors", {}).get(name, "")
+    if c == "nbc":
+        return ' class="pc nbc"'
+    return f' class="pc" style="--c:{c}"' if c else ""
+
+
+def brand_li(name):
+    return f"<li{brand_attr(name)}>{e(name)}</li>"
 
 
 def media_el(kind, name, pre, mode, label="", focus=""):
@@ -44,7 +64,7 @@ def media_el(kind, name, pre, mode, label="", focus=""):
         extra = "" if mode in ("thumb", "loop") else " controls"
         return (f'<video data-src="{src}" poster="{poster}" muted loop playsinline preload="none"{extra} '
                 f'width="{w}" height="{h}" aria-label="{e(label)}"{st}></video>')
-    return f'<img src="{pre}media/{name}" width="{w}" height="{h}" loading="lazy" decoding="async" alt="{e(label)}"{st}>'
+    return f'<img src="{pre}media/{W(name)}" width="{w}" height="{h}" loading="lazy" decoding="async" alt="{e(label)}"{st}>'
 
 
 def cats_of(p):
@@ -122,8 +142,8 @@ def footer(pre):
 
 def row(p, pre, i):
     k, n = p["thumb"]
-    prev = f"{pre}media/thumb/{n}" if k == "vid" else f"{pre}media/{n}"
-    return f"""<a class="r" href="{url_for(p, pre)}" data-cats="{cats_of(p)}" data-preview="{prev}" data-kind="{k}" data-still="{still(p, pre)}" data-focus="{p.get('focus','50% 50%')}">
+    prev = f"{pre}media/thumb/{n}" if k == "vid" else f"{pre}media/{W(n)}"
+    return f"""<a class="r" style="--accent:{p.get('accent','var(--ink)')}" href="{url_for(p, pre)}" data-cats="{cats_of(p)}" data-preview="{prev}" data-kind="{k}" data-still="{still(p, pre)}" data-focus="{p.get('focus','50% 50%')}">
   <span class="n">{i:02d}</span>
   <span class="t">{e(p['title'])}</span>
   <span class="m"><b>{e(p.get('type',''))}</b><span>{e(p.get('year',''))}</span></span>
@@ -133,7 +153,7 @@ def row(p, pre, i):
 
 def card(p, pre):
     k, n = p["thumb"]
-    return f"""<a class="card" href="{url_for(p, pre)}" data-cats="{cats_of(p)}">
+    return f"""<a class="card" style="--accent:{p.get('accent','var(--ink)')}" href="{url_for(p, pre)}" data-cats="{cats_of(p)}">
   <div class="thumb">{media_el(k, n, pre, 'thumb', p['title'], p.get('focus',''))}</div>
   <div class="card-meta"><span style="color:var(--ink);text-align:left">{e(p['title'])}</span><span>{e(p.get('type',''))} · {e(p.get('year',''))}</span></div>
 </a>"""
@@ -156,7 +176,7 @@ def page_home():
     rows = "".join(row(p, pre, i + 1) for i, p in enumerate(sel))
     facts = "".join(f"<span><b>{e(a)}</b> {e(b)}</span>" for a, b in SITE["stats"])
     skills = "".join(f"<li>{e(x)}</li>" for x in SITE["skills"])
-    press = "".join(f"<li>{e(x)}</li>" for x in SITE["press"])
+    press = "".join(brand_li(x) for x in SITE["press"])
     impact = "".join(f"<li><b>{e(a)}</b><span>{e(b)}</span></li>" for a, b in SITE["impact"])
     exp = "".join(f'<div class="xr"><span>{e(r)}</span><span>{e(o)}</span><span>{e(y)}</span></div>' for r, o, y in SITE["experience"])
     resumes = "".join(f'<a class="btn" href="{pre}{u}" target="_blank" rel="noopener">Resume · {e(n)} ↗</a>' for n, u in SITE["resumes"])
@@ -164,13 +184,13 @@ def page_home():
     out += f"""<section class="hero-name">
   <h1 data-fit>{e(SITE['name'])}</h1>
   <div class="hero-sub">
-    <p>{e(SITE['role'])} — content, film, brand &amp; product.<br>{e(SITE['location'])}.</p>
+    <p>{SITE['summary']}</p>
     <p class="facts">{facts}</p>
   </div>
 </section>
 <section class="reel">
   <a class="reel-media" href="{url_for(fp, pre)}">
-    <video data-src="{pre}media/{f['video']}" poster="{pre}media/{f['poster']}" muted loop playsinline preload="none" width="16" height="9" aria-label="{e(f['label'])} showreel"></video>
+    <video data-src="{pre}media/{f['video']}" poster="{pre}media/{W(f['poster'])}" muted loop playsinline preload="none" width="16" height="9" aria-label="{e(f['label'])} showreel"></video>
   </a>
   <div class="reel-cap"><span><b>{e(f['label'])}</b> — {e(f['sub'])}</span><span>{e(f['note'].strip('()'))}</span></div>
 </section>
@@ -306,7 +326,7 @@ def render_blocks(blocks, pre, title):
         elif kind == "list":
             out.append('<ul class="credits">' + "".join(f"<li>{e(x)}</li>" for x in val) + "</ul>")
         elif kind == "press":
-            out.append('<div class="press-list">' + "".join(f'<a href="{u}" target="_blank" rel="noopener">{e(nm)} ↗</a>' for nm, u in val) + "</div>")
+            out.append('<div class="press-list">' + "".join(f'<a href="{u}" target="_blank" rel="noopener"{brand_attr(nm)}>{e(nm)} ↗</a>' for nm, u in val) + "</div>")
         elif kind == "btn":
             out.append(f'<a class="btn" href="{val[1]}" target="_blank" rel="noopener">{e(val[0])} ↗</a>')
         elif kind == "quote":

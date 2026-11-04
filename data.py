@@ -25,12 +25,14 @@ SITE = {
     "status": "Open to content, marketing, design & film roles",
     "school": "UC Berkeley",
     "location": "Berkeley, CA · from Yakutia",
-    "stats": [("35.9M", "views on one Super Bowl LX video"), ("TIME · People · NBC · BBC Radio 1", "press"), ("Bushwick Film Festival", "Official Selection, 2026")],
+    "stats": [("35M+", "views on one Super Bowl LX video"), ("Featured in", "TIME, People, NBC, BBC Radio 1"), ("Official Selection", "Bushwick Film Festival 2026")],
+    "summary": "Filmmaker &amp; designer<br>Berkeley, CA",
     "press": ["TIME", "People", "NBC Bay Area", "BBC Radio 1", "Bushwick Film Festival"],
+    # brand colours for the Featured list (approximate; replace with exact hex if you have it)
+    "press_colors": {"TIME": "#D62503", "People": "#20B1EA", "NBC Bay Area": "nbc", "BBC Radio 1": "#0D0D0D", "Bushwick Film Festival": "#F2559A", "Impact": "#0D0D0D"},
     "about_personal": [
-        "I’m from Yakutsk, the coldest city on Earth. I grew up speaking Sakha and Russian, learned English and French along the way, and now study Film & Media at UC Berkeley (class of 2027).",
-        "My work sits between a camera, a timeline and Figma. I performed in Bad Bunny’s Super Bowl LX halftime show and turned that night into a 35M-view video. I shot a festival documentary on a vintage Soviet lens, built an AI couture film out of Sakha mythology, and designed products and brands like Dwello and Expansion Pictures, the 40-member film club I co-founded.",
-        "I like making things people actually stop for, and I bring a little of Yakutia into all of it.",
+        "I’m from Yakutsk, the coldest city on Earth, and I study Film & Media at UC Berkeley. I speak Sakha, Russian, English and French.",
+        "I move between a camera, a timeline and Figma, and I like making things people actually stop for, with a little of Yakutia in all of it.",
     ],
     "impact": [("35M+", "organic views on one Super Bowl LX video"), ("+1,200%", "audience growth, to 11K+ followers"), ("5M+", "views from AI-made campaigns at Orcool"), ("40+", "members in the film club I co-founded")],
     "experience": [
