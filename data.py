@@ -39,7 +39,7 @@ SITE = {
         "I’m from Yakutsk, the coldest city on Earth, and I study Film & Media at UC Berkeley. I speak Sakha, Russian, English and French.",
         "I move between a camera, a timeline and Figma, and I like making things people actually stop for, with a little of Yakutia in all of it.",
     ],
-    "impact": [("35M+", "organic views on one Super Bowl LX video"), ("+1,200%", "audience growth, to 11K+ followers"), ("5M+", "views from AI-made marketing campaigns"), ("40+", "members in the film club I co-founded")],
+    "impact": [("35M+", "organic views on one Super Bowl LX video"), ("+1,200%", "audience growth, to 11K+ followers"), ("40+", "members in the film club I co-founded")],
     "experience": [
         ("Development Coordinator", "UC Berkeley CLTC", "2025 – now"),
         ("Product Designer", "Dwello", "2025 – 2026"),
