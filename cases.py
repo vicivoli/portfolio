@@ -37,10 +37,11 @@ CASES = {
             {"id": "press", "label": "Press", "h2": "The video turned into a news story.", "blocks": [
                 ("p", "The show itself was watched by 128M viewers in the U.S. My reel was picked up by TIME, People and BBC Radio 1, and NBC Bay Area interviewed me as a halftime performer and UC Berkeley student. My audience grew to 11K+ followers, up 1,200%."),
                 ("media", [[("vid", "nbc-bayarea.mp4", "NBC Bay Area: “Bad Bunny halftime ‘bush’ performers go viral”")],
+                           [("vid", "h4hGaE00hZI9JMmYDyHODORWA8s.mp4", "")],
                            [("img", "57mPYQUV7GavNK9KUjrijYnPdFY.jpeg", "TIME"), ("img", "02PhdzZCyVGJFwzcH9pGpXogkU.jpeg", "People")]]),
                 ("press", [("TIME", "https://www.instagram.com/reel/DUlvFNeFd_N/"),
                            ("People", "https://people.com/man-dressed-as-bush-in-bad-bunny-super-bowl-halftime-show-gives-inside-look-exclusive-11903886"),
-                           ("Impact", "https://www.instagram.com/p/DUuHqQglLxL/")]),
+                           ("BBC Radio 1", "https://www.bbc.com/audio/play/p0n0dh74"), ("Impact", "https://www.instagram.com/p/DUuHqQglLxL/")]),
                 ("btn", ("Watch the original reel", "https://www.instagram.com/reel/DUh3MNVgCon/")),
             ]},
             {"id": "takeaways", "label": "Takeaways", "h2": "What made it travel.", "blocks": [

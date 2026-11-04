@@ -29,6 +29,11 @@ SITE = {
     "summary": "Filmmaker &amp; designer<br>Berkeley, CA",
     "press": ["TIME", "People", "NBC Bay Area", "BBC Radio 1", "Bushwick Film Festival"],
     # brand colours for the Featured list (approximate; replace with exact hex if you have it)
+    "press_links": {"TIME": "https://www.instagram.com/reels/DUlvFNeFd_N/",
+                    "People": "https://people.com/man-dressed-as-bush-in-bad-bunny-super-bowl-halftime-show-gives-inside-look-exclusive-11903886",
+                    "NBC Bay Area": "works/superbowl-lx.html#press",
+                    "BBC Radio 1": "https://www.bbc.com/audio/play/p0n0dh74",
+                    "Bushwick Film Festival": "works/ayan.html#festival"},
     "press_colors": {"TIME": "#D62503", "People": "#20B1EA", "NBC Bay Area": "nbc", "BBC Radio 1": "#0D0D0D", "Bushwick Film Festival": "#F2559A", "Impact": "#0D0D0D"},
     "about_personal": [
         "I’m from Yakutsk, the coldest city on Earth, and I study Film & Media at UC Berkeley. I speak Sakha, Russian, English and French.",

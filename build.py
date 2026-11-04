@@ -50,7 +50,12 @@ def brand_attr(name):
 
 
 def brand_li(name):
-    return f"<li{brand_attr(name)}>{e(name)}</li>"
+    link = SITE.get("press_links", {}).get(name)
+    if not link:
+        return f"<li{brand_attr(name)}>{e(name)}</li>"
+    ext = link.startswith("http")
+    tgt = ' target="_blank" rel="noopener"' if ext else ""
+    return f'<li{brand_attr(name)}><a href="{link}"{tgt}>{e(name)}<span class="arr">{"↗" if ext else "→"}</span></a></li>'
 
 
 def media_el(kind, name, pre, mode, label="", focus=""):
