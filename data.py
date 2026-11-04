@@ -46,7 +46,7 @@ SITE = {
         ("Content Producer & Field Cast", "Super Bowl LX Halftime Show", "2026"),
         ("Marketing Intern", "inDrive · Almaty", "2025"),
         ("Marketing Specialist", "Orcool", "2024 – 2025"),
-        ("Project Manager Consultant", "Piedmont Consulting Group", "2025 – now"),
+        ("Project Manager Consultant", "Piedmont Consulting Group", "2025 – 2026"),
         ("President & Co-Founder", "Expansion Pictures", "2023 – 2025"),
         ("Cinematographer & Cast", "AYAN, feature documentary", "2023 – 2025"),
     ],
