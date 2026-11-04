@@ -17,7 +17,7 @@
 }
 @media (min-width:768px){:root{--gl:max(32px,env(safe-area-inset-left,0px));--gr:max(32px,env(safe-area-inset-right,0px))}}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:500 15px/1.45 var(--font);letter-spacing:-.03em;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 a:focus-visible,button:focus-visible{outline:1.5px solid var(--ink);outline-offset:4px}
@@ -278,7 +278,7 @@ blockquote cite{display:block;margin-top:10px;font-size:12px;font-style:normal;c
 
 video[data-src]:not([src]){opacity:.001}
 video{transition:opacity .4s}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 /* rich case blocks */
 .wide-stack>.stack{gap:16px}
@@ -400,3 +400,33 @@ li.pc.nbc{color:var(--ink)}
 /* hero summary */
 .hero-sub p:first-child{max-width:30em}
 .hero-sub .facts span b{margin-right:6px}
+
+/* little details */
+.hero-name h1 span{display:inline-block;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.hero-name h1 span:hover{transform:translateY(-.08em)}
+.live{position:relative}
+.live .snow{position:absolute;left:0;top:0;width:100%;aspect-ratio:4/5;pointer-events:none}
+.live:hover video{filter:saturate(.85) brightness(1.03)}
+.live video{transition:filter .6s}
+.live figcaption b{color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){.hero-name h1 span{transition:none}.hero-name h1 span:hover{transform:none}}
+
+/* page transitions: a plain, smooth cross-fade */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:vt-fade-out .3s ease both}
+::view-transition-new(root){animation:vt-fade-in .4s ease both}
+@keyframes vt-fade-out{to{opacity:0}}
+@keyframes vt-fade-in{from{opacity:0}}
+html.no-vt body{animation:vt-fade-in .4s ease both}
+html.leaving body{opacity:0;transition:opacity .25s ease}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),html.no-vt body{animation:none}}
+
+/* keep text-like blocks inside the reading column even in wide sections */
+.wide-stack>.stack>.flows,.wide-stack>.stack>.quotes,.wide-stack>.stack>.two,.wide-stack>.stack>.list{max-width:760px;width:100%;margin-inline:auto}
+.flow-t{font-weight:500;text-transform:uppercase;letter-spacing:-.02em}
+/* snackpass: one consistent, square language; panel titles line up with the reading column */
+.phone img{border-radius:0;box-shadow:0 0 0 1px var(--line)}
+.ba-panel>h3{max-width:760px;width:100%;margin-inline:auto}
+.ba-grid{max-width:760px;margin-inline:auto;justify-content:space-between;width:100%}
+.ba-grid .arrow{justify-self:center}
+.case .cta{max-width:760px;margin-inline:auto;justify-content:flex-start}

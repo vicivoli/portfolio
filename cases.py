@@ -123,7 +123,7 @@ CASES = {
             ]},
             {"id": "festival", "label": "Festival", "h2": "Official Selection, Bushwick Film Festival 2026.", "blocks": [
                 ("p", "In October 2026 AYAN was selected for the Bushwick Film Festival in New York City. I attended as a filmmaker and, after the screening, answered the audience’s questions in the Q&A."),
-                ("media", [[("img", "ayan-qa.jpg", "Q&A after the screening"), ("img", "ayan-carpet.jpg", "Bushwick Film Festival, New York")]]),
+                ("media", [[("img", "ayan-carpet.jpg", "Bushwick Film Festival, New York"), ("img", "ayan-qa.jpg", "Q&A after the screening")]]),
                 ("btn", ("Watch on YouTube", "https://www.youtube.com/watch?v=0tW5ulFfwrg")),
             ]},
         ],

@@ -129,7 +129,7 @@ def touch_block(pre=""):
 
 
 def footer(pre):
-    return f"""<footer class="foot"><span>{e(SITE['brand'])} ©{YEAR}</span><a href="#top">Back to top ↑</a></footer>
+    return f"""<footer class="foot"><span>{e(SITE['brand'])} ©{YEAR} · made in Berkeley, from the coldest city on Earth</span><a href="#top">Back to top ↑</a></footer>
 </main>
 <div class="preview" aria-hidden="true"></div>
 <script src="{pre}assets/site.js"></script>
@@ -182,7 +182,7 @@ def page_home():
     resumes = "".join(f'<a class="btn" href="{pre}{u}" target="_blank" rel="noopener">Resume · {e(n)} ↗</a>' for n, u in SITE["resumes"])
     out = head(SITE['name'], pre) + header(pre) + '<main id="top">\n'
     out += f"""<section class="hero-name">
-  <h1 data-fit>{e(SITE['name'])}</h1>
+  <h1 data-fit aria-label="{e(SITE['name'])}">{''.join(f'<span aria-hidden="true">{ch}</span>' if ch != ' ' else ' ' for ch in e(SITE['name']))}</h1>
   <div class="hero-sub">
     <p>{SITE['summary']}</p>
     <p class="facts">{facts}</p>
@@ -201,12 +201,13 @@ def page_home():
 <section class="about" id="about">
   <div class="about-text">
     <p class="label">About</p>
-    <h2>Filmmaker. Designer.<br>From the coldest<br>city on Earth.</h2>
+    <h2>From the coldest<br>city on Earth.</h2>
     <div class="txt">{''.join(f"<p>{e(x)}</p>" for x in SITE['about_personal'])}</div>
   </div>
-  <figure class="live">
+  <figure class="live" data-snow>
     <video data-src="{pre}media/{SITE['about_video']}" poster="{pre}media/poster/{SITE['about_video'].rsplit('.',1)[0]}.jpg" muted loop playsinline preload="none" width="720" height="900" aria-label="Nikolai in a frosted hood and face mask, winter in Yakutsk"></video>
-    <figcaption><span>Yakutsk, winter</span><span>Home</span></figcaption>
+    <canvas class="snow" aria-hidden="true"></canvas>
+    <figcaption><span>Yakutsk, winter</span><span>Now in Yakutsk <b data-ykt>--:--</b></span></figcaption>
   </figure>
 </section>
 <section class="about-cols">
@@ -322,7 +323,7 @@ def render_blocks(blocks, pre, title):
         elif kind == "cards":
             out.append('<div class="decisions">' + "".join(f'<div class="card"><strong>{e(t)}</strong>{e(x)}</div>' for t, x in val) + "</div>")
         elif kind == "steps":
-            out.append('<div class="panel flows">' + "".join(f'<div class="flow"><q>{e(q)}</q><div class="steps">' + '<i>→</i>'.join(f"<span>{e(x)}</span>" for x in st) + "</div></div>" for q, st in val) + "</div>")
+            out.append('<div class="panel flows">' + "".join(f'<div class="flow"><strong class="flow-t">{e(q)}</strong><div class="steps">' + '<i>→</i>'.join(f"<span>{e(x)}</span>" for x in st) + "</div></div>" for q, st in val) + "</div>")
         elif kind == "list":
             out.append('<ul class="credits">' + "".join(f"<li>{e(x)}</li>" for x in val) + "</ul>")
         elif kind == "press":

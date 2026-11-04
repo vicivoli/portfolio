@@ -26,7 +26,7 @@
 <div class="menu" id="menu" hidden><nav aria-label="Menu"><a href="works.html">Work</a><a href="./#about">About</a><a href="contact.html">Contact</a><a href="./#resume">Resume</a></nav></div>
 <main id="top">
 <section class="hero-name">
-  <h1 data-fit>Nikolai Petukhov</h1>
+  <h1 data-fit aria-label="Nikolai Petukhov"><span aria-hidden="true">N</span><span aria-hidden="true">i</span><span aria-hidden="true">k</span><span aria-hidden="true">o</span><span aria-hidden="true">l</span><span aria-hidden="true">a</span><span aria-hidden="true">i</span> <span aria-hidden="true">P</span><span aria-hidden="true">e</span><span aria-hidden="true">t</span><span aria-hidden="true">u</span><span aria-hidden="true">k</span><span aria-hidden="true">h</span><span aria-hidden="true">o</span><span aria-hidden="true">v</span></h1>
   <div class="hero-sub">
     <p>Filmmaker &amp; designer<br>Berkeley, CA</p>
     <p class="facts"><span><b>35M+</b> views on one Super Bowl LX video</span><span><b>Featured in</b> TIME, People, NBC, BBC Radio 1</span><span><b>Official Selection</b> Bushwick Film Festival 2026</span></p>
@@ -75,12 +75,13 @@
 <section class="about" id="about">
   <div class="about-text">
     <p class="label">About</p>
-    <h2>Filmmaker. Designer.<br>From the coldest<br>city on Earth.</h2>
+    <h2>From the coldest<br>city on Earth.</h2>
     <div class="txt"><p>I’m from Yakutsk, the coldest city on Earth, and I study Film &amp; Media at UC Berkeley. I speak Sakha, Russian, English and French.</p><p>I move between a camera, a timeline and Figma, and I like making things people actually stop for, with a little of Yakutia in all of it.</p></div>
   </div>
-  <figure class="live">
+  <figure class="live" data-snow>
     <video data-src="media/about-yakutsk.mp4" poster="media/poster/about-yakutsk.jpg" muted loop playsinline preload="none" width="720" height="900" aria-label="Nikolai in a frosted hood and face mask, winter in Yakutsk"></video>
-    <figcaption><span>Yakutsk, winter</span><span>Home</span></figcaption>
+    <canvas class="snow" aria-hidden="true"></canvas>
+    <figcaption><span>Yakutsk, winter</span><span>Now in Yakutsk <b data-ykt>--:--</b></span></figcaption>
   </figure>
 </section>
 <section class="about-cols">
@@ -104,7 +105,7 @@
     </div>
   </div>
 </section>
-<footer class="foot"><span>vicivoli ©2026</span><a href="#top">Back to top ↑</a></footer>
+<footer class="foot"><span>vicivoli ©2026 · made in Berkeley, from the coldest city on Earth</span><a href="#top">Back to top ↑</a></footer>
 </main>
 <div class="preview" aria-hidden="true"></div>
 <script src="assets/site.js"></script>

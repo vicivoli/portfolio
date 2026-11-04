@@ -3,6 +3,40 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return [].slice.call((r || document).querySelectorAll(s)); };
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Always open a new page at the top; back/forward is left to the browser so you return to your place
+  var navType = 'navigate';
+  try { var ne = performance.getEntriesByType('navigation')[0]; if (ne) navType = ne.type; } catch (err) {}
+  if (navType !== 'back_forward' && !location.hash) {
+    var toTop = function () { window.scrollTo(0, 0); };
+    toTop(); requestAnimationFrame(toTop); addEventListener('load', toTop);
+  }
+
+  // Fade for browsers without View Transitions
+  var hasVT = 'onpagereveal' in window;
+  if (!hasVT && !reduce) {
+    document.documentElement.classList.add('no-vt');
+    document.addEventListener('click', function (ev) {
+      var a = ev.target.closest && ev.target.closest('a[href]');
+      if (!a || a.target === '_blank' || ev.defaultPrevented || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button !== 0) return;
+      var u = new URL(a.href, location.href);
+      if (u.origin !== location.origin || u.pathname === location.pathname || /\.pdf$/i.test(u.pathname)) return;
+      ev.preventDefault();
+      document.documentElement.classList.add('leaving');
+      setTimeout(function () { location.href = a.href; }, 220);
+    });
+    addEventListener('pageshow', function (ev) { if (ev.persisted) document.documentElement.classList.remove('leaving'); });
+  }
+
+  // Smooth scroll only for links to a section on the same page
+  document.addEventListener('click', function (ev) {
+    var a = ev.target.closest && ev.target.closest('a[href*="#"]'); if (!a) return;
+    var u = new URL(a.href, location.href);
+    if (u.pathname !== location.pathname || !u.hash) return;
+    var t = document.getElementById(u.hash.slice(1)); if (!t) return;
+    ev.preventDefault();
+    t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    history.replaceState(null, '', u.hash);
+  });
 
   // Fit the big name to its column exactly
   var fitEls = $$('[data-fit]');
@@ -14,6 +48,46 @@
     });
   };
   if (fitEls.length) { fit(); addEventListener('resize', fit); if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit); }
+
+  // Local time in Yakutsk
+  var ykt = $('[data-ykt]');
+  if (ykt) {
+    var yf = new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Yakutsk', hour: 'numeric', minute: '2-digit' });
+    var yt = function () { ykt.textContent = yf.format(new Date()); };
+    yt(); setInterval(yt, 30000);
+  }
+
+  // Snow falls over the Yakutsk selfie on hover
+  $$('[data-snow]').forEach(function (fig) {
+    var cv = $('canvas', fig); if (!cv || reduce) return;
+    var ctx = cv.getContext('2d'), flakes = [], on = false, raf = null, dpr = Math.min(2, window.devicePixelRatio || 1);
+    var size = function () { var r = cv.getBoundingClientRect(); cv.width = r.width * dpr; cv.height = r.height * dpr; };
+    var add = function () {
+      var big = Math.random() < 0.22;
+      flakes.push({ x: Math.random() * cv.width, y: -20 * dpr, r: (big ? 9 + Math.random() * 6 : 1.2 + Math.random() * 2.2) * dpr,
+        vy: (big ? 0.6 : 0.8 + Math.random() * 1.2) * dpr, vx: (Math.random() - 0.5) * 0.4 * dpr, a: Math.random() * 6.28, big: big, rot: Math.random() * 6.28 });
+    };
+    var tick = function () {
+      ctx.clearRect(0, 0, cv.width, cv.height);
+      if (on && flakes.length < 140) { add(); if (Math.random() < 0.6) add(); }
+      flakes = flakes.filter(function (f) { return f.y < cv.height + 30 * dpr; });
+      flakes.forEach(function (f) {
+        f.a += 0.02; f.x += f.vx + Math.sin(f.a) * 0.35 * dpr; f.y += f.vy; f.rot += 0.01;
+        if (f.big) {
+          ctx.save(); ctx.translate(f.x, f.y); ctx.rotate(f.rot); ctx.globalAlpha = 0.9;
+          ctx.font = (f.r * 2) + 'px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#fff';
+          ctx.fillText('❄', 0, 0); ctx.restore();
+        } else {
+          ctx.globalAlpha = 0.85; ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, 6.28); ctx.fill();
+        }
+      });
+      ctx.globalAlpha = 1;
+      raf = (on || flakes.length) ? requestAnimationFrame(tick) : null;
+    };
+    fig.addEventListener('mouseenter', function () { size(); on = true; if (!raf) raf = requestAnimationFrame(tick); });
+    fig.addEventListener('mouseleave', function () { on = false; });
+    fig.addEventListener('touchstart', function () { size(); on = true; if (!raf) raf = requestAnimationFrame(tick); setTimeout(function () { on = false; }, 2500); }, { passive: true });
+  });
 
   // Menu overlay
   var btn = $('.menu-btn'), menu = $('#menu');
@@ -86,7 +160,7 @@
   $$('[data-copy]').forEach(function (b) {
     b.addEventListener('click', function () {
       var t = b.getAttribute('data-copy'), hint = $('.copy-hint', b);
-      var ok = function () { b.classList.add('done'); if (hint) hint.textContent = 'Copied'; setTimeout(function () { b.classList.remove('done'); if (hint) hint.textContent = 'Copy'; }, 1800); };
+      var ok = function () { b.classList.add('done'); if (hint) hint.textContent = 'Copied ❄'; setTimeout(function () { b.classList.remove('done'); if (hint) hint.textContent = 'Copy'; }, 1800); };
       var fallback = function () { var r = document.createRange(); r.selectNodeContents(b.firstElementChild); var s = getSelection(); s.removeAllRanges(); s.addRange(r); if (hint) hint.textContent = 'Press ⌘C'; };
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(ok, fallback); else fallback();
     });
