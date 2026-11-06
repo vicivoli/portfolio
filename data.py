@@ -77,7 +77,7 @@ PROJECTS = [
         "more": [],
     },
     {
-        "slug": "snackpass", "role": "UX research & product design", "result": "5-person team · 32 surveys, 8 interviews", "type": "Product", "year": "2026", "title": "Snackpass Filters", "cats": ["Design"],
+        "slug": "snackpass", "role": "UX research & product design", "result": "5-person team · 32 surveys, 8 interviews", "type": "Product", "year": "2026", "title": "Snackpass", "cats": ["Design"],
         "external": "works/snackpass/index.html",
         "thumb": ("img", "snackpass-thumb.jpg"),
         "tagline": "Helping students find food by craving, price, deals, and distance.",
