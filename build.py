@@ -134,7 +134,7 @@ def touch_block(pre=""):
 
 
 def footer(pre):
-    return f"""<footer class="foot"><span>{e(SITE['brand'])} ©{YEAR} · made in Berkeley, from the coldest city on Earth</span><a href="#top">Back to top ↑</a></footer>
+    return f"""<footer class="foot"><span>{e(SITE['brand'])} ©{YEAR}</span><a href="#top">Back to top ↑</a></footer>
 </main>
 <div class="preview" aria-hidden="true"></div>
 <script src="{pre}assets/site.js"></script>
@@ -351,8 +351,8 @@ def nda_hero(p, pre):
     return f"""<div class="hero dark nda"><div class="nda-bg">{media_el(k, n, pre, 'full', '')}</div>
   <div class="nda-card">{LOCK}
     <p class="nda-t">This project is confidential</p>
-    <p class="nda-x">It’s protected by an NDA, so the visuals stay private. I’d love to walk you through it on a call.</p>
-    <a class="btn" href="mailto:{SITE['email']}?subject={subj}">Let’s talk →</a>
+    <p class="nda-x">It’s protected by an NDA. I’d love to walk you through it on a call.</p>
+    <a class="btn" href="{pre}contact.html">Contact me →</a>
   </div></div>"""
 
 

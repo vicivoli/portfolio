@@ -63,16 +63,16 @@ PROJECTS = [
     {
         "slug": "agi", "confidential": True, "role": "Industrial designer & prototyping", "result": "AI wearable, under NDA", "type": "Product", "year": "2026", "title": "AGI, Inc.", "cats": ["Design"],
         "thumb": ("img", "agi-cover.jpg"),
-        "tagline": "Industrial design for an AI wearable. Under NDA.",
+        "tagline": "Industrial design for an AI wearable.",
         "meta": [("Client", "AGI, Inc."), ("Timeline", "Fall 2026"), ("Team", "Cross-functional group")],
         "sections": [
             {"id": "overview", "label": "Overview", "h2": "Bringing AI off the screen", "blocks": [
                 ("p", "AGI, Inc. builds AI that takes action for you across the apps on your phone. We were asked to design the physical object that brings it off the screen: a wearable people would want to wear even when it’s switched off.")]},
             {"id": "role", "label": "My role", "h2": "From first concepts to factory prototyping", "blocks": [
                 ("p", "I led the industrial design of the device, from first concepts to a design ready for factory prototyping."),
-                ("list", ["Form exploration and concept development", "Material and finish direction", "Physical interaction design", "CAD and wearable prototypes", "Product renders and motion for the brand and launch teams"])]},
-            {"id": "outcome", "label": "Outcome", "h2": "", "blocks": [
-                ("p", "A hardware design ready for factory prototyping, a wearable prototype, and the product visuals used across the brand and launch.")]},
+                ("list", ["Form exploration and concept development", "Material and finish direction", "Physical interaction design", "CAD and wearable prototypes", "Prototyping in Figma and Blender", "Product renders and motion for the brand and launch teams"])]},
+            {"id": "status", "label": "Status", "h2": "In development", "blocks": [
+                ("p", "The product is still in development. My part took it from first sketches to a design ready for factory prototyping, a wearable prototype, and the visuals the brand and launch teams are working with.")]},
         ],
         "more": [],
     },
@@ -83,11 +83,11 @@ PROJECTS = [
         "tagline": "Helping students find food by craving, price, deals, and distance.",
     },
     {
-        "slug": "saqa-the-spirits-of-the-three-worlds", "focus": "50% 12%", "role": "Concept, direction & editing", "result": "AI fashion film rooted in Sakha mythology", "type": "Film", "year": "2026", "title": "SAQA: The Spirits of the Three Worlds",
+        "slug": "saqa-the-spirits-of-the-three-worlds", "focus": "50% 12%", "role": "Concept, direction & editing", "result": "AI fashion film rooted in Sakha mythology", "type": "Film", "year": "2026", "title": "SAQA: The Spirits",
         "cats": ["Film & Motion"],
         "thumb": ("vid", "SuyMupjstO4c4rNo7WY5YTBWE.mp4"),
         "tagline": "Where Sakha mythology meets couture",
-        "meta": [("Client", "SAQA: The Spirits of the Three Worlds"), ("Year", "2026")],
+        "meta": [("Year", "2026")],
         "credits": ["Concept, direction, editing — Nikolai Petukhov",
                     "Image & video — Higgsfield, Kling, Seedance, Nano Banana",
                     "Music — ElevenLabs", "Inspired by Wisdom Kaye"],
@@ -134,7 +134,7 @@ PROJECTS = [
                  "I led the end-to-end design across product and brand — developing the interface, logo, and full visual identity system. The result is a cohesive, intuitive experience that reduces friction in the housing search process."],
         "media": [[("img", "aoPLKKfQzhZufwliYWlLwfqOoU.png")], [("img", "hLTFfLN8QGmQciEYYZwc7Px3a68.png")],
                   [("img", "5OQy3E2f8DtgsHnkwJWDZxqHYLY.png")]],
-        "more": ["expansionpictures", "codeofbeauty", "jackal"],
+        "more": ["expansionpictures"],
     },
     {
         "slug": "because-of-cltc", "thumb_override": ("img", "ewrULhdOTNTXqtB7Bdm85U6jsk.png"), "role": "Campaign logo & visual identity", "result": "10-year campaign for UC Berkeley CLTC", "type": "Branding", "year": "2025", "title": "Because of CLTC", "cats": ["Branding", "Film & Motion"],
@@ -149,15 +149,6 @@ PROJECTS = [
         "more": ["fallinginlove", "billieeilish", "araas"],
     },
     {
-        "slug": "codeofbeauty", "role": "Brand identity, web layout & content direction", "result": "Digital editorial platform", "type": "Branding", "year": "2024", "title": "Code of Beauty", "cats": ["Design", "Branding"],
-        "thumb": ("img", "gFtSyVUuvG2QgZ3K7PjnKoR24Aw.png"),
-        "tagline": "Designing the invisible code of beauty",
-        "meta": [("Client", "Tiffany"), ("Location", "San Francisco, CA"), ("Year", "2024")],
-        "info": ["The Secret Code of Beauty is a digital editorial project exploring aesthetics, care, and style through a refined visual language. I developed the brand identity, website layout, and content direction to evoke a sense of calm luxury and intellectual depth — positioning it as a modern platform for thoughtful beauty and design narratives."],
-        "media": [[("img", "JaCg1vrXRsAPZ1uNyZTzI0SXo.png")], [("img", "zg4yWJUgvjcccaSPhtj2rFvpPA.png")]],
-        "more": ["expansionpictures", "jackal", "fallinginlove"],
-    },
-    {
         "slug": "expansionpictures", "role": "Brand identity", "result": "Identity for UC Berkeley’s student film club", "type": "Branding", "year": "2023", "title": "Expansion Pictures", "cats": ["Branding"],
         "thumb": ("vid", "As0ezVGpjQKFJkwiTmZVeO7hwI.mp4"),
         "tagline": "Where film, design and imagination expand.",
@@ -167,26 +158,7 @@ PROJECTS = [
         "media": [[("img", "MTh8aPNwsGPcAVOmhfC6BOqruM.png")], [("img", "uNElsCgL0zw5BF619Pf709yQA.png")],
                   [("img", "1gTHZEqq0s0n1uw1y0Sbf6Dbq4.png")],
                   [("img", "mBJx9hK5bv3kU88MAoudJ952rls.png"), ("img", "1DKqVx6rgtkIsbN453RRBD54aY.png")]],
-        "more": ["codeofbeauty", "jackal", "dwello"],
-    },
-    {
-        "slug": "roast", "role": "Brand & product concept", "result": "iOS productivity app concept", "type": "Product", "year": "2025", "title": "ROAST", "cats": ["Design"],
-        "thumb": ("img", "iNjtXmcnoesvd3FrnTGk7ufCaXc.png"),
-        "tagline": "Where missed deadlines get personal.",
-        "meta": [("Client", "ROAST"), ("Location", "San Francisco"), ("Year", "2025")],
-        "info": ["Roast is a conceptual iOS productivity app that explores accountability through humor. The idea imagines a to-do list that doesn’t just remind you about overdue tasks, but roasts you for them.",
-                 "I developed a playful brand and product concept built around sharp copy, expressive UI moments, and a bold, irreverent tone — turning procrastination into a game of motivation through light humiliation. The project is an early-stage concept and visual exploration, focused on how personality, voice, and design can reshape everyday productivity tools."],
-        "media": [[("img", "faeODywLjqCbvIfVbhhsd20riw.png")]],
-        "more": ["dwello", "snackpass", "codeofbeauty"],
-    },
-    {
-        "slug": "jackal", "role": "Brand identity", "result": "Identity for a computer club in Yakutsk", "type": "Branding", "year": "2024", "title": "Jackal", "cats": ["Branding"],
-        "thumb": ("img", "Q7pxaWgTujNVQLc4srK2n4bxD4E.png"),
-        "tagline": "Designing instinct. Defining identity.",
-        "meta": [("Client", "Jackal Inc"), ("Location", "Yakutsk"), ("Year", "2024")],
-        "info": ["JACKAL is a computer club built around precision, focus, and modern digital culture. The identity captures the sharp instincts and strategic mindset that define competitive gaming. With its bold geometric logo and clean visual language, JACKAL positions itself as a contemporary space for performance, community, and creativity."],
-        "media": [[("img", "gDos5imhpR6ABT5O53ALzWCOxo.png")], [("img", "ekf8euBh1wUH7vdKCGVh6eHeXo.png")]],
-        "more": ["expansionpictures", "codeofbeauty", "dwello"],
+        "more": ["dwello"],
     },
     {
         "slug": "fallinginlove", "role": "Visualizer", "result": "Music visualizer", "type": "Film", "year": "2025", "title": "Falling in Love (Visualizer)", "cats": ["Film & Motion"],
