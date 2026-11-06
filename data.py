@@ -20,7 +20,7 @@ SITE = {
                  "sub": "Feature Documentary / 2025",
                  "video": "95l68HVzc2lwPbeiTJhfEYyEg.mp4", "poster": "aoyDogUqf42d7dhoeNXC580CYHA.png"},
     # Projects shown under "Selected work" on the home page
-    "selected": ["superbowl-lx", "saqa-the-spirits-of-the-three-worlds", "snackpass", "ayan", "because-of-cltc", "dwello"],
+    "selected": ["superbowl-lx", "agi", "saqa-the-spirits-of-the-three-worlds", "snackpass", "ayan", "because-of-cltc", "dwello"],
     "intro": "I make content, brands and films people actually watch.",
     "status": "Open to content, marketing, design & film roles",
     "school": "UC Berkeley",
@@ -60,6 +60,22 @@ CATEGORIES = ["Content", "Film", "Product", "Branding"]
 
 # Order here = order on the Works page.
 PROJECTS = [
+    {
+        "slug": "agi", "confidential": True, "role": "Industrial designer & prototyping", "result": "AI wearable, under NDA", "type": "Product", "year": "2026", "title": "AGI, Inc.", "cats": ["Design"],
+        "thumb": ("img", "agi-cover.jpg"),
+        "tagline": "Industrial design for an AI wearable. Under NDA.",
+        "meta": [("Client", "AGI, Inc."), ("Timeline", "Fall 2026"), ("Team", "Cross-functional group")],
+        "sections": [
+            {"id": "overview", "label": "Overview", "h2": "Bringing AI off the screen", "blocks": [
+                ("p", "AGI, Inc. builds AI that takes action for you across the apps on your phone. We were asked to design the physical object that brings it off the screen: a wearable people would want to wear even when it’s switched off.")]},
+            {"id": "role", "label": "My role", "h2": "From first concepts to factory prototyping", "blocks": [
+                ("p", "I led the industrial design of the device, from first concepts to a design ready for factory prototyping."),
+                ("list", ["Form exploration and concept development", "Material and finish direction", "Physical interaction design", "CAD and wearable prototypes", "Product renders and motion for the brand and launch teams"])]},
+            {"id": "outcome", "label": "Outcome", "h2": "", "blocks": [
+                ("p", "A hardware design ready for factory prototyping, a wearable prototype, and the product visuals used across the brand and launch.")]},
+        ],
+        "more": [],
+    },
     {
         "slug": "snackpass", "role": "UX research & product design", "result": "5-person team · 32 surveys, 8 interviews", "type": "Product", "year": "2026", "title": "Snackpass Filters", "cats": ["Design"],
         "external": "works/snackpass/index.html",

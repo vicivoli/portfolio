@@ -223,6 +223,6 @@ CASES["araas"] = {"extra_meta": [("Tools", "Final Cut Pro, CapCut, Dazz Cam")]}
 CASES["billieeilish"] = {"extra_meta": [("Tools", "Premiere Pro")]}
 
 # Accent colour per project (used on hover)
-ACCENTS = {'snackpass': '#16B7F2', 'saqa-the-spirits-of-the-three-worlds': '#B3121B', 'ayan': '#D9692B', 'superbowl-lx': '#4E8A2B', 'dwello': '#E4572E', 'because-of-cltc': '#002676', 'codeofbeauty': '#B76E79', 'expansionpictures': '#5B2EE0', 'roast': '#FF4A1C', 'jackal': '#3D3D3D', 'fallinginlove': '#E8452C', 'araas': '#D63A8A', 'billieeilish': '#8DB51F', 'thawing-flame': '#C8501E'}
+ACCENTS = {'agi': '#C8913F', 'snackpass': '#16B7F2', 'saqa-the-spirits-of-the-three-worlds': '#B3121B', 'ayan': '#D9692B', 'superbowl-lx': '#4E8A2B', 'dwello': '#E4572E', 'because-of-cltc': '#002676', 'codeofbeauty': '#B76E79', 'expansionpictures': '#5B2EE0', 'roast': '#FF4A1C', 'jackal': '#3D3D3D', 'fallinginlove': '#E8452C', 'araas': '#D63A8A', 'billieeilish': '#8DB51F', 'thawing-flame': '#C8501E'}
 for _k, _v in ACCENTS.items():
     CASES.setdefault(_k, {})['accent'] = _v

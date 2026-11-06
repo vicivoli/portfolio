@@ -150,7 +150,7 @@ def row(p, pre, i):
     prev = f"{pre}media/thumb/{n}" if k == "vid" else f"{pre}media/{W(n)}"
     return f"""<a class="r" style="--accent:{p.get('accent','var(--ink)')}" href="{url_for(p, pre)}" data-cats="{cats_of(p)}" data-preview="{prev}" data-kind="{k}" data-still="{still(p, pre)}" data-focus="{p.get('focus','50% 50%')}">
   <span class="n">{i:02d}</span>
-  <span class="t">{e(p['title'])}</span>
+  <span class="t">{e(p['title'])}{LOCK if p.get('confidential') else ''}</span>
   <span class="m"><b>{e(p.get('type',''))}</b><span>{e(p.get('year',''))}</span></span>
   <span class="mini"><img src="{still(p, pre)}" alt="" loading="lazy" style="object-position:{p.get('focus','50% 50%')}"></span>
 </a>"""
@@ -160,7 +160,7 @@ def card(p, pre):
     k, n = p["thumb"]
     return f"""<a class="card" style="--accent:{p.get('accent','var(--ink)')}" href="{url_for(p, pre)}" data-cats="{cats_of(p)}">
   <div class="thumb">{media_el(k, n, pre, 'thumb', p['title'], p.get('focus',''))}</div>
-  <div class="card-meta"><span style="color:var(--ink);text-align:left">{e(p['title'])}</span><span>{e(p.get('type',''))} · {e(p.get('year',''))}</span></div>
+  <div class="card-meta"><span style="color:var(--ink);text-align:left">{e(p['title'])}{LOCK if p.get('confidential') else ''}</span><span>{e(p.get('type',''))} · {e(p.get('year',''))}</span></div>
 </a>"""
 
 
@@ -342,12 +342,28 @@ def render_blocks(blocks, pre, title):
     return '<div class="stack">' + "".join(out) + "</div>"
 
 
+LOCK = '<svg class="lock" viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>'
+
+
+def nda_hero(p, pre):
+    k, n = p["thumb"]
+    subj = f"{p['title']} project".replace(" ", "%20")
+    return f"""<div class="hero dark nda"><div class="nda-bg">{media_el(k, n, pre, 'full', '')}</div>
+  <div class="nda-card">{LOCK}
+    <p class="nda-t">This project is confidential</p>
+    <p class="nda-x">It’s protected by an NDA, so the visuals stay private. I’d love to walk you through it on a call.</p>
+    <a class="btn" href="mailto:{SITE['email']}?subject={subj}">Let’s talk →</a>
+  </div></div>"""
+
+
 def page_project(p):
     pre = "../"
     media = p.get("media", [])
     first = media[0] if media else []
     rest = media[1:]
-    if len(first) == 1:
+    if p.get("confidential"):
+        hero = nda_hero(p, pre)
+    elif len(first) == 1:
         k, n = first[0][0], first[0][1]
         w, h = ratio(n)
         wide = " wide-media" if w > h * 1.2 else ""
