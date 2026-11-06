@@ -122,7 +122,7 @@ def touch_block(pre=""):
   <p class="label">Contact</p>
   <h2>Let’s make<br>something.</h2>
   <div class="touch-row">
-    <button class="copy" type="button" data-copy="{SITE['email']}"><span>{e(SITE['email'])}</span><span class="copy-hint">Copy</span></button>
+    <div class="touch-cta"><button class="copy" type="button" data-copy="{SITE['email']}"><span>{e(SITE['email'])}</span><span class="copy-hint">Copy</span></button><a class="btn call" href="{SITE['calendar']}" target="_blank" rel="noopener">Book a call ↗</a></div>
     <div class="links">
       <a href="{SITE['linkedin']}" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a href="{SITE['instagram']}" target="_blank" rel="noopener">Instagram ↗</a>
@@ -252,6 +252,7 @@ def page_contact():
   <div class="contact-text">
     <h1>Contact</h1>
     <p class="txt">{e(SITE['contact_text'])}</p>
+    <a class="btn call" href="{SITE['calendar']}" target="_blank" rel="noopener">Book a call ↗</a>
     <dl class="contact-list">
       <div><dt>Email</dt><dd><button class="copy" type="button" data-copy="{SITE['email']}"><span>{e(SITE['email'])}</span><span class="copy-hint">Copy</span></button></dd></div>
       <div><dt>Socials</dt><dd><a href="{SITE['linkedin']}" target="_blank" rel="noopener">LinkedIn ↗</a><a href="{SITE['instagram']}" target="_blank" rel="noopener">Instagram ↗</a></dd></div>

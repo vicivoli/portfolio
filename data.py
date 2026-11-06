@@ -6,6 +6,7 @@ SITE = {
     "brand": "vicivoli",
     "role": "Filmmaker & Designer",
     "email": "nikolaypetukhov@berkeley.edu",
+    "calendar": "https://calendar.google.com/appointments/schedules/AcZssZ21YvfpH-kOLXo9kjyJK8e6L7A9xSQ7LC_eiv13t9TIC2Oq5Q30_yEH62tPmBSCjdzT8W38M-Qy",
     "instagram": "https://www.instagram.com/vicivoli/",
     "linkedin": "https://www.linkedin.com/in/nikolaipetukhov",
     "resume": "https://drive.google.com/file/d/1joIH7RbN9CFYOYbh3Rs6ACfZg9797hxl/view?usp=sharing",

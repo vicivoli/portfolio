@@ -462,3 +462,5 @@ li.pc a:hover{text-decoration:underline;text-underline-offset:4px;text-decoratio
 .nda-bg img{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none}
 .case .nda-card p.nda-t{color:#fff!important;font-size:clamp(20px,2.6vw,32px)!important;font-weight:500!important;line-height:1!important}
 .case .nda-card p.nda-x{color:rgba(255,255,255,.72)!important;font-size:15px!important;line-height:1.45!important}
+.contact .btn.call{margin:4px 0 8px}
+.touch-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.touch-cta .btn{align-self:stretch}
