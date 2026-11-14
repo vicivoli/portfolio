@@ -62,16 +62,13 @@ CATEGORIES = ["Content", "Film", "Product", "Branding"]
 # Order here = order on the Works page.
 PROJECTS = [
     {
-        "slug": "agi", "confidential": True, "role": "Industrial designer & prototyping", "result": "AI wearable, under NDA", "type": "Product", "year": "2026", "title": "AGI, Inc.", "cats": ["Design"],
+        "slug": "agi", "confidential": True, "role": "Hardware designer", "result": "AI wearable, under NDA", "type": "Product", "year": "2026", "title": "AGI, Inc.", "cats": ["Design"],
         "thumb": ("img", "agi-cover.jpg"),
         "tagline": "Industrial design for an AI wearable.",
         "meta": [("Client", "AGI, Inc."), ("Timeline", "Fall 2026"), ("Team", "Cross-functional group")],
         "sections": [
             {"id": "overview", "label": "Overview", "h2": "Bringing AI off the screen", "blocks": [
                 ("p", "AGI, Inc. builds AI that takes action for you across the apps on your phone. We were asked to design the physical object that brings it off the screen: a wearable people would want to wear even when it’s switched off.")]},
-            {"id": "role", "label": "My role", "h2": "From first concepts to factory prototyping", "blocks": [
-                ("p", "I led the industrial design of the device, from first concepts to a design ready for factory prototyping."),
-                ("list", ["Form exploration and concept development", "Material and finish direction", "Physical interaction design", "CAD and wearable prototypes", "Prototyping in Figma and Blender", "Product renders and motion for the brand and launch teams"])]},
             {"id": "status", "label": "Status", "h2": "In development", "blocks": [
                 ("p", "The product is still in development. My part took it from first sketches to a design ready for factory prototyping, a wearable prototype, and the visuals the brand and launch teams are working with.")]},
         ],
